@@ -1,36 +1,40 @@
-## Foundry
+## Faucet Minter
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Repository Structure<a name="repository-structure"></a>
 
-Foundry consists of:
+```
+contracts
+│ README.md                   // you are here
+│ ...                         // setup and development configuration files
+│
+├─── deployements            // deployed contract addresses
+├─── out                     // compiled contract files
+│
+├─── src                      // the contract code
+│
+├─── test                     // contract unit tests
+│
+```
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-
-## Documentation
-
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
+### Compile Contract
 
 ```shell
 $ forge build
 ```
 
-### Test
+## RUN ALL TESTS BSC
 
-```shell
-$ forge test
+``forge test -vv `
+
+## RUN SINGLE file
+
+`forge test -vv --match-contract FaucetTest `
+
+# Deployment Guide:
+
 ```
+$ forge create --rpc-url <your_rpc_url> --private-key <your_private_key> src/Token.sol:Zenith --constructor-args "xx" "xxx" --etherscan-api-key <your_etherscan_api_key> --verify
 
-### Format
-
-```shell
-$ forge fmt
 ```
 
 ### Gas Snapshots
@@ -43,24 +47,4 @@ $ forge snapshot
 
 ```shell
 $ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
 ```
